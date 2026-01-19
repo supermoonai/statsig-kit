@@ -7,8 +7,8 @@ let package = Package(
     platforms: [.watchOS(.v7), .iOS(.v10), .tvOS(.v10), .macOS(.v10_13)],
     products: [
         .library(
-            name: "Statsig",
-            targets: ["Statsig"]),
+            name: "StatsigKit",
+            targets: ["StatsigKit"]),
     ],
     dependencies: [
         .package(url: "https://github.com/AliSoftware/OHHTTPStubs.git", .upToNextMajor(from: "9.1.0")),
@@ -19,17 +19,17 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Statsig",
+            name: "StatsigKit",
             dependencies: [],
-            path: "Sources/Statsig"
+            path: "Sources/StatsigKit"
         ),
         .testTarget(
             name: "StatsigTests",
-            dependencies: ["Statsig", "Quick", "Nimble", "OHHTTPStubs", "Gzip", .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")]
+            dependencies: ["StatsigKit", "Quick", "Nimble", "OHHTTPStubs", "Gzip", .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")]
         ),
         .testTarget(
             name: "StatsigObjcTests",
-            dependencies: [.target(name: "Statsig"),.product(name: "OCMock", package: "ocmock")],
+            dependencies: [.target(name: "StatsigKit"), .product(name: "OCMock", package: "ocmock")],
             resources: [.process("Resources")]
         ),
     ],
